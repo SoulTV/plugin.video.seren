@@ -24,7 +24,7 @@ def dispatch(params):
 
         source_select = params.get('source_select')
 
-        seren_reload = True if params.get('seren_reload') == 'true' and tools.playList.getposition() == 0 else False
+        seren_reload = True if params.get('seren_reload') == 'true' else False
 
         resume = params.get('resume')
 
@@ -70,6 +70,105 @@ def dispatch(params):
         from resources.lib.gui import homeMenu
 
         homeMenu.Menus().home()
+        
+########Begin Soul TV Modifications
+
+    if action == 'soulmovieHome':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().discoverSoul()
+
+    if action == 'soultvshowHome':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().discoverSoul()
+
+    if action == 'moviesLatest':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviesLatest()
+
+    if action == 'moviesLatest4k':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviesLatest4k()
+
+    if action == 'moviesRTBestofyear':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviesRTBestofyear()
+
+    if action == 'moviesLatestReddit':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviesLatestReddit()
+
+    if action == 'moviesNetflix':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviesNetflix()
+
+    if action == 'moviesPixelHunter':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviesPixelHunter()
+
+    if action == 'moviesNeverseen':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviesNeverseen()
+
+    if action == 'showsGary':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().showsGary()
+
+    if action == 'showsNetflix':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().showsNetflix()
+
+    if action == 'showsPixelHunter':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().showsPixelHunter()
+
+    if action == 'showsAmazon':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().showsAmazon()
+
+    if action == 'showsHulu':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().showsHulu()
+
+    if action == 'soulSpotlight':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().soulSpotlight()
+
+    if action == 'showssoulSpotlight':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().showssoulSpotlight()
+
+    if action == 'moviessoulSpotlight':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviessoulSpotlight()
+
+    if action == 'showssoulCurated':
+        from resources.lib.gui import tvshowMenus
+
+        tvshowMenus.Menus().showssoulCurated()
+
+    if action == 'moviessoulCurated':
+        from resources.lib.gui import movieMenus
+
+        movieMenus.Menus().moviessoulCurated()
+        
+########End Soul TV Modifications
 
     if action == 'smartPlay':
         from resources.lib.modules import smartPlay
@@ -581,7 +680,7 @@ def dispatch(params):
         from resources.lib.modules import smartPlay
 
         try:
-            smartPlay.SmartPlay(actionArgs).shufflePlay()
+            smart = smartPlay.SmartPlay(actionArgs).shufflePlay()
         except:
             import traceback
             traceback.print_exc()
@@ -694,8 +793,6 @@ def dispatch(params):
         maintenance.premiumize_transfer_cleanup()
 
     if action == 'test2':
-        from resources.lib.debrid import premiumize
-        tools.log(premiumize.Premiumize().hash_check(['80a5cbe2ae41a409d6989afee5cc81da51d69566']))
         pass
 
     if action == 'manualProviderUpdate':
